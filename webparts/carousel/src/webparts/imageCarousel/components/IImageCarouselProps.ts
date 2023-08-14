@@ -1,7 +1,8 @@
 export interface IImageCarouselProps {
   description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
-  hasTeamsContext: boolean;
-  userDisplayName: string;
+  listName: string;
+  slideSpeed: number;
+  pauseCarousel: boolean;
+  absoluteURL: any;
+  spHttpClient: any;
 }
