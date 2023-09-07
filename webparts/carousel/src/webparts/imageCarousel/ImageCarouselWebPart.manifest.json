@@ -18,11 +18,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
     "group": { "default": "Advanced" },
-    "title": { "default": "image-carousel" },
-    "description": { "default": "image-carousel description" },
-    "officeFabricIconFontName": "Page",
+    "title": { "default": "Image Carousel" },
+    "description": { "default": "A slideshow component for cycling through elements" },
+    "officeFabricIconFontName": "FileImage",
     "properties": {
-      "description": "image-carousel"
+      "description": "A slideshow component for cycling through elements"
     }
   }]
 }

@@ -20,6 +20,10 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
       value: []
     }
   }
+  componentDidMount = () => {
+    console.log("componentDidMount getCarouselListContent");
+    this.getCarouselListContent();
+  }
 
   private getCarouselListContent = () => {
     try {
@@ -49,68 +53,63 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
     }
   }
 
-  componentDidMount = () => {
-    this.getCarouselListContent();
+
+  private isStringEmptyOrNull(sString: string): boolean {
+    let isEmpty: boolean = true;
+    if (sString === null) {
+      isEmpty = true;
+    } else if (sString === undefined) {
+      isEmpty = true;
+    }
+    else if (sString.trim().length === 0) {
+      isEmpty = true;
+    }
+    else {
+      isEmpty = false;
+    }
+    return isEmpty;
   }
-
-
 
   public render(): React.ReactElement<IImageCarouselProps> {
     let collection = this.state.value;
-    console.log('Collection', collection);
+    console.log('Render Event Called');
+    console.log(collection);
     const {
       slideSpeed,
       pauseCarousel
     } = this.props;
-    /*const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName
-    } = this.props;
-*/
-
-    return (
-      <div className={styles.imageCarousel}>
-        <Carousel pause={pauseCarousel? 'hover': false} interval={this.props.slideSpeed}>
-          {
-            collection.length > 0 && collection.map((data, index) => {
-              if (data.RedirectURL != null) {
-                return (
-                  <Carousel.Item>
-                    <a href={data.RedirectURL['Url']}>
+      return (
+        <div className={styles.imageCarousel} >
+          <Carousel pause={pauseCarousel ? 'hover' : false} interval={slideSpeed}>
+            {
+              collection.length > 0 && collection.map((data, index) => {
+                if ((data.RedirectURL !== null) && (data.RedirectURL !== undefined)) {
+                  return (
+                    <Carousel.Item>
+                      <a href={(data.RedirectURL !== undefined) ? data.RedirectURL['URL'] : ""}>
+                        <img
+                          className="d-block w-100"
+                          src={JSON.parse(data.ImageURL).serverRelativeUrl}
+                          alt={this.isStringEmptyOrNull(data.Title) ? "" : escape(data.Title)}
+                        />
+                      </a>
+                    </Carousel.Item>
+                  )
+                } else {
+                  return (
+                    <Carousel.Item>
                       <img
                         className="d-block w-100"
                         src={JSON.parse(data.ImageURL).serverRelativeUrl}
-                        alt="First slide"
+                        alt={this.isStringEmptyOrNull(data.Title) ? "" : escape(data.Title)}
                       />
-                      <Carousel.Caption>
-                        <h3>{data.Title}</h3>
-                        <p>{data.Description}</p>
-                      </Carousel.Caption>
-                    </a>
-                  </Carousel.Item>
-                )
-              } else{
-                return (
-                  <Carousel.Item>
-                      <img
-                        className="d-block w-100"
-                        src={JSON.parse(data.ImageURL).serverRelativeUrl}
-                        alt="First slide"
-                      />
-                      <Carousel.Caption>
-                        <h3>{data.Title}</h3>
-                        <p>{data.Description}</p>
-                      </Carousel.Caption>
-                  </Carousel.Item>
-                )
-              }
-            })
-          }
-        </Carousel>
-      </div>
-    );
+                    </Carousel.Item>
+                  )
+                }
+              })
+            }
+          </Carousel>
+        </div>
+      );
   }
 }

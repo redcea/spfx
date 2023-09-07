@@ -76,7 +76,7 @@ export default class ImageCarouselWebPart extends BaseClientSideWebPart<IImageCa
                   value: 5000
                 }),
                 PropertyPaneCheckbox("pauseCarousel",{
-                  checked:true,
+                  checked: true,
                   text: "Pauses the carousel when the mouse pointer enters the carousel"
                 })
               ]
