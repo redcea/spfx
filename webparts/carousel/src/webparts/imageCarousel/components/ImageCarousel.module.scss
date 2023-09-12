@@ -5,6 +5,7 @@
   padding: 1em;
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
+
   &.teams {
     font-family: $ms-font-family-fallbacks;
   }
@@ -31,4 +32,12 @@
       color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
     }
   }
+}
+.rootNeedConfiguration {
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  background-Color: "#f4f4f4";
+  padding: "80px 0";
+  align-Items: "center";
+  box-Align: "center";
 }

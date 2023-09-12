@@ -3,6 +3,8 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
+  PropertyPaneDropdown,
+  PropertyPaneChoiceGroup,
   PropertyPaneCheckbox,
   PropertyPaneSlider,
   PropertyPaneTextField
@@ -16,6 +18,9 @@ import { labelProperties } from 'office-ui-fabric-react';
 export interface IImageCarouselWebPartProps {
   description: string;
   listName: string;
+  order: string;
+  numberOfItems: number;
+  uiLcid: number;
   slideSpeed: number;
   pauseCarousel: boolean;
   absoluteURL: any;
@@ -24,16 +29,21 @@ export interface IImageCarouselWebPartProps {
 
 export default class ImageCarouselWebPart extends BaseClientSideWebPart<IImageCarouselWebPartProps> {
 
+
   public render(): void {
     const element: React.ReactElement<IImageCarouselProps> = React.createElement(
       ImageCarousel,
       {
         description: this.properties.description,
         listName: this.properties.listName,
+        order: this.properties.order,
+        numberOfItems: this.properties.numberOfItems,
+        uiLcid: this.properties.uiLcid,
         slideSpeed: this.properties.slideSpeed,
         pauseCarousel: this.properties.pauseCarousel,
         absoluteURL: this.context.pageContext.web.absoluteUrl,
-        spHttpClient: this.context.spHttpClient
+        spHttpClient: this.context.spHttpClient,
+
       }
     );
 
@@ -61,12 +71,52 @@ export default class ImageCarouselWebPart extends BaseClientSideWebPart<IImageCa
               groupFields: [
                 PropertyPaneTextField('listName', {
                   label: strings.ListName
+                }),
+                PropertyPaneChoiceGroup('order', {
+                  label: strings.OrderFieldLabel,
+                  options: [{
+                    key: 'asc',
+                    text: strings.OrderFieldAscendingOptionLabel,
+                    checked: true
+                  },
+                  {
+                    key: 'desc',
+                    text: strings.OrderFieldDescendingOptionLabel
+                  }
+                  ]
+                }),
+                PropertyPaneSlider('numberOfItems', {
+                  label: strings.NumberOfItemsFieldLabel,
+                  min: 1,
+                  max: 10,
+                  step: 1,
+                  value: 5,
+                  showValue: true
+
+                }),
+                PropertyPaneDropdown('uiLcid', {
+                  label: strings.LanguageFieldLabel,
+                  options: [
+                    {
+                      key: 1033,
+                      text: strings.EnglishOptionLabel
+                    },
+                    {
+                      key: 1046,
+                      text: strings.PortugueseOptionLabel
+                    },
+                    {
+                      key: 3082,
+                      text: strings.SpanishOptionLabel
+                    }
+                  ]
+
                 })
               ]
             },
             {
               groupName: "Carousel Options",
-              groupFields: [                
+              groupFields: [
                 PropertyPaneSlider('slideSpeed', {
                   min: 500,
                   max: 7000,
@@ -75,7 +125,7 @@ export default class ImageCarouselWebPart extends BaseClientSideWebPart<IImageCa
                   showValue: true,
                   value: 5000
                 }),
-                PropertyPaneCheckbox("pauseCarousel",{
+                PropertyPaneCheckbox("pauseCarousel", {
                   checked: true,
                   text: "Pauses the carousel when the mouse pointer enters the carousel"
                 })
@@ -86,4 +136,8 @@ export default class ImageCarouselWebPart extends BaseClientSideWebPart<IImageCa
       ]
     };
   }
+  protected get disableReactivePropertyChanges(): boolean {
+    return true;
+  }
+
 }
