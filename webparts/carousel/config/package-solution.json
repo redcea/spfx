@@ -3,23 +3,23 @@
   "solution": {
     "name": "carousel-client-side-solution",
     "id": "22ce4516-14d0-40be-978f-1d2357a29137",
-    "version": "1.0.0.0",
+    "version": "1.0.0.1",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "developer": {
-      "name": "",
-      "websiteUrl": "",
+      "name": "Conference of American Armies",
+      "websiteUrl": "https://www.redcea.com",
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "mpnId": "Undefined-1.17.4"
     },
     "metadata": {
       "shortDescription": {
-        "default": "carousel description"
+        "default": "An Image Carousel (slideshow) webpart that allows you to slide images on your SharePoint Pages "
       },
       "longDescription": {
-        "default": "carousel description"
+        "default": "An image carousel (slideshow) of images that users can select by clicking and that directs them forward or backward in the slideshow."
       },
       "screenshotPaths": [],
       "videoUrl": "",
@@ -30,7 +30,7 @@
         "title": "carousel Feature",
         "description": "The feature that activates elements of the carousel solution.",
         "id": "63e4d249-6a34-46cb-ac41-55351e72d014",
-        "version": "1.0.0.0"
+        "version": "1.0.0.1"
       }
     ]
   },
