@@ -4,6 +4,7 @@ import { IImageCarouselProps } from './IImageCarouselProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 /** Import from Demo */
 import Carousel from 'react-bootstrap/Carousel';
+import CreateCarouselCaption from './ImageCarouselCaption';
 import "bootstrap/dist/css/bootstrap.css";
 import * as jQuery from 'jquery';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
@@ -168,6 +169,8 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
                           src={JSON.parse(data.ImageURL).serverRelativeUrl}
                           alt={ImageCarousel.isStringEmptyOrNull(data.Title) ? "" : escape(data.Title)}
                         />
+                        <CreateCarouselCaption Title={(!ImageCarousel.isStringEmptyOrNull(data.Title))? data.Title: undefined} 
+                        Description={(!ImageCarousel.isStringEmptyOrNull(data.Description))? data.Description: undefined} />
                       </a>
                     </Carousel.Item>
                   )
@@ -188,6 +191,9 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
         </div>
       );
     }
+  }
+  private convertSecondsToMiliseconds(iMiliseconds: number) : number {
+    return 5;
   }
 
   private needsConfirguration(): boolean {
