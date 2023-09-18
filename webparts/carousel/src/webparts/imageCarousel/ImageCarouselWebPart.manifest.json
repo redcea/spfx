@@ -40,7 +40,7 @@
         "order": "asc",
         "numberOfItems": 5,
         "uiLcid": 1033,
-        "slideSpeed": 5000,
+        "slideSpeed": 5,
         "pauseCarousel": true
       }
     }
