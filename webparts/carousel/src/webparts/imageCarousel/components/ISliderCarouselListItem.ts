@@ -3,7 +3,8 @@ export interface ISliderCarouselListItem{
   Title: string;
   Description : string;
   ImageURL: string;
-  RedirectURL?:[]
+  RedirectURL?:[];
+  Target?:string;
 }
 export interface ISliderCarouselState { 
   value : ISliderCarouselListItem [];
