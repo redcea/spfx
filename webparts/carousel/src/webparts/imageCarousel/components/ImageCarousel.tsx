@@ -12,7 +12,7 @@ import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { ISliderCarouselListItem, ISliderCarouselState } from './ISliderCarouselListItem';
 import ImageCarouselWebPart from '../ImageCarouselWebPart';
 import * as strings from 'ImageCarouselWebPartStrings';
-
+import { Target } from './ImageCarouselEnums';
 
 
 export default class ImageCarousel extends React.Component<IImageCarouselProps, ISliderCarouselState> {
@@ -23,6 +23,7 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
       value: []
     }
   }
+
   private locales = {
     1025: 'ar-SA',
     1026: 'bg-BG',
@@ -98,11 +99,12 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
     try {
       const sListName: string = escape(this.props.listName);
       const nTop: number = this.props.numberOfItems > 0 ? this.props.numberOfItems : 5;
+      const sSelect: string = "$select=ImageURL,Title,Description,RedirectURL,Target";
       const sFilter: string = "$filter=(Language eq '0000') or (Language eq '" + this.props.uiLcid.toString() + "')";
       const sOrderByStatement: string = "$orderby=SortOrder " + (ImageCarousel.isStringEmptyOrNull(escape(this.props.order)) ? "asc" : escape(this.props.order));
       const sTopStatement: string = "$Top=" + nTop.toString();
 
-      const requestUrl: string = `${this.props.absoluteURL}/_api/web/Lists/GetByTitle('${sListName}')/Items?` + sFilter + '&' + sTopStatement + '&' + sOrderByStatement;
+      const requestUrl: string = `${this.props.absoluteURL}/_api/web/Lists/GetByTitle('${sListName}')/Items?` + sSelect  + '&' + sFilter + '&' + sTopStatement + '&' + sOrderByStatement;
       console.log("requestURL: " + requestUrl)
       this.props.spHttpClient.get(requestUrl, SPHttpClient.configurations.v1)
         .then((response: SPHttpClientResponse): Promise<ISliderCarouselState> => {
@@ -155,22 +157,25 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
       </div>;
     }
     else {
+
       return (
         <div className={styles.imageCarousel} >
-          <Carousel pause={pauseCarousel ? 'hover' : false} interval={slideSpeed}>
+          <Carousel pause={pauseCarousel ? 'hover' : false} interval={(slideSpeed * 1000)}>
             {
               collection.length > 0 && collection.map((data, index) => {
                 if ((data.RedirectURL !== null) && (data.RedirectURL !== undefined)) {
                   return (
                     <Carousel.Item>
-                      <a href={(data.RedirectURL !== undefined) ? data.RedirectURL['URL'] : ""}>
+                      <a href={(data.RedirectURL !== null) ? escape(data.RedirectURL["Url"]) : ""}
+                        title={(data.RedirectURL !== null) ? escape(data.RedirectURL["Description"]) : escape(data.RedirectURL["Url"])}
+                        target={(data.Target)? Target.Blank: ImageCarousel.getUrlTarget(escape(data.Target))}>
                         <img
                           className="d-block w-100"
                           src={JSON.parse(data.ImageURL).serverRelativeUrl}
                           alt={ImageCarousel.isStringEmptyOrNull(data.Title) ? "" : escape(data.Title)}
                         />
-                        <CreateCarouselCaption Title={(!ImageCarousel.isStringEmptyOrNull(data.Title))? data.Title: undefined} 
-                        Description={(!ImageCarousel.isStringEmptyOrNull(data.Description))? data.Description: undefined} />
+                        <CreateCarouselCaption Title={(!ImageCarousel.isStringEmptyOrNull(data.Title)) ? data.Title : undefined}
+                          Description={(!ImageCarousel.isStringEmptyOrNull(data.Description)) ? data.Description : undefined} />
                       </a>
                     </Carousel.Item>
                   )
@@ -191,9 +196,6 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
         </div>
       );
     }
-  }
-  private convertSecondsToMiliseconds(iMiliseconds: number) : number {
-    return 5;
   }
 
   private needsConfirguration(): boolean {
@@ -222,6 +224,23 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
     }
     else {
       return '';
+    }
+  }
+  /**
+   * 
+   * @param sTargetKey Datasource Target Field value 
+   * @returns Returns 
+   */
+  private static getUrlTarget(sTarget: string): string {
+    try {
+      if (ImageCarousel.isStringEmptyOrNull(sTarget)) {
+        return Target.Blank;
+      } else {
+        return Target[sTarget];
+      }
+    }
+    catch {
+      return Target.Blank;
     }
   }
 
