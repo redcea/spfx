@@ -1,16 +1,20 @@
 define([], function() {
     return {
-      "PropertyPaneDescription": "Description",
-      "BasicGroupName": "Group Name",
-      "DescriptionFieldLabel": "Description Field",
-      "AppLocalEnvironmentSharePoint": "The app is running on your local environment as SharePoint web part",
-      "AppLocalEnvironmentTeams": "The app is running on your local environment as Microsoft Teams app",
-      "AppLocalEnvironmentOffice": "The app is running on your local environment in office.com",
-      "AppLocalEnvironmentOutlook": "The app is running on your local environment in Outlook",
-      "AppSharePointEnvironment": "The app is running on SharePoint page",
-      "AppTeamsTabEnvironment": "The app is running in Microsoft Teams",
-      "AppOfficeEnvironment": "The app is running in office.com",
-      "AppOutlookEnvironment": "The app is running in Outlook",
-      "ListName": "Nome da Lista para o Slideshow"
+      "PropertyPaneDescription": "CEA - 365 Slideshow",
+      "BasicGroupName": "Fonte dos dados",
+      "DescriptionFieldLabel": "",
+      "ListName": "Nome da Lista Para o Slideshow",
+      "slideSpeed": "Especifica o atraso (em segundos) entre cada slide",
+      "OrderFieldLabel": "Ordem das Imagens",
+      "OrderFieldAscendingOptionLabel": "ascendente",
+      "OrderFieldDescendingOptionLabel": "decrescente",
+      "NumberOfItemsFieldLabel": "Número de fotos para mostrar",
+      "LanguageFieldLabel": "Idioma",
+      "EnglishOptionLabel": "Inglês",
+      "PortugueseOptionLabel": "Português",
+      "SpanishOptionLabel": "Espanhol",
+      "NeedConfigurationHeading": "Slidehow de Imagens",
+      "ShowItemsFromSelectedList": "Mostrar o slideshow de imagens da lista seleccionada",
+      "PauseCarouselOptionLabel": "Pausa o slideshow quando o ponteiro do mouse entra no carrossel"
     }
   });
