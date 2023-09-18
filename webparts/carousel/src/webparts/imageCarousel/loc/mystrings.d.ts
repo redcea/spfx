@@ -14,6 +14,7 @@ declare interface IImageCarouselWebPartStrings {
   SpanishOptionLabel: string;
   NeedConfigurationHeading:string;
   ShowItemsFromSelectedList:String;
+  PauseCarouselOptionLabel:string;
 }
 
 declare module 'ImageCarouselWebPartStrings' {

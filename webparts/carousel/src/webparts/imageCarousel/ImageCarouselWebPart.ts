@@ -13,7 +13,6 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'ImageCarouselWebPartStrings';
 import ImageCarousel from './components/ImageCarousel';
 import { IImageCarouselProps } from './components/IImageCarouselProps';
-import { labelProperties } from 'office-ui-fabric-react';
 
 export interface IImageCarouselWebPartProps {
   description: string;
@@ -118,16 +117,16 @@ export default class ImageCarouselWebPart extends BaseClientSideWebPart<IImageCa
               groupName: "Carousel Options",
               groupFields: [
                 PropertyPaneSlider('slideSpeed', {
-                  min: 500,
-                  max: 7000,
+                  min: 2,
+                  max: 7,
                   step: 1,
                   label: strings.slideSpeed,
                   showValue: true,
-                  value: 5000
+                  value: 5
                 }),
                 PropertyPaneCheckbox("pauseCarousel", {
                   checked: true,
-                  text: "Pauses the carousel when the mouse pointer enters the carousel"
+                  text: strings.PauseCarouselOptionLabel
                 })
               ]
             }
