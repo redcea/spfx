@@ -22,7 +22,7 @@ export interface IImageCarouselWebPartProps {
   uiLcid: number;
   slideSpeed: number;
   pauseCarousel: boolean;
-  absoluteURL: any;
+  absoluteURL: string;
   spHttpClient: any;
 }
 
