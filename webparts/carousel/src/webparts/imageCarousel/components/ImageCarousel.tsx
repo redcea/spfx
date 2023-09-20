@@ -153,7 +153,7 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
         <div className="ms-Grid-row" style={{ width: "65%", verticalAlign: "middle", margin: "0 auto", textAlign: "center" }}>
           <span style={{ color: "#666", fontSize: "17px", display: "inline-block", margin: "24px 0", fontWeight: 100 }}>{strings.ShowItemsFromSelectedList}</span>
         </div>
-        <div className="ms-Grid-row"></div>
+        <div className="ms-Grid-row"/>
       </div>;
     }
     else {
