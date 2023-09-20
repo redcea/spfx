@@ -1,4 +1,3 @@
-
 export interface IImageCarouselProps {
   description: string;
   listName: string;
@@ -7,6 +6,6 @@ export interface IImageCarouselProps {
   uiLcid: number;
   slideSpeed: number;
   pauseCarousel: boolean;
-  absoluteURL: any;
+  absoluteURL: string;
   spHttpClient: any;
 }
