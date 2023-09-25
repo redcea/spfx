@@ -8,9 +8,7 @@ import CreateCarouselCaption from './ImageCarouselCaption';
 import "bootstrap/dist/css/bootstrap.css";
 import * as jQuery from 'jquery';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
-
 import { ISliderCarouselListItem, ISliderCarouselState } from './ISliderCarouselListItem';
-import ImageCarouselWebPart from '../ImageCarouselWebPart';
 import * as strings from 'ImageCarouselWebPartStrings';
 import { Target } from './ImageCarouselEnums';
 
@@ -104,7 +102,7 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
       const sOrderByStatement: string = "$orderby=SortOrder " + (ImageCarousel.isStringEmptyOrNull(escape(this.props.order)) ? "asc" : escape(this.props.order));
       const sTopStatement: string = "$Top=" + nTop.toString();
 
-      const requestUrl: string = `${this.props.absoluteURL}/_api/web/Lists/GetByTitle('${sListName}')/Items?` + sSelect  + '&' + sFilter + '&' + sTopStatement + '&' + sOrderByStatement;
+      const requestUrl: string = `${this.props.absoluteURL}/_api/web/Lists/GetByTitle('${sListName}')/Items?` + sSelect + '&' + sFilter + '&' + sTopStatement + '&' + sOrderByStatement;
       console.log("requestURL: " + requestUrl)
       this.props.spHttpClient.get(requestUrl, SPHttpClient.configurations.v1)
         .then((response: SPHttpClientResponse): Promise<ISliderCarouselState> => {
@@ -142,19 +140,18 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
     } = this.props;
 
     if (this.needsConfirguration()) {
-      return <div className="ms-Grid rootNeedConfiguration">
-        <div className="ms-Grid-row" style={{ color: "#333" }}>
-          <div className="ms-Grid-col ms-u-hiddenSm ms-u-md3"></div>
-          <div className="ms-Grid-col ms-u-sm12 ms-u-md6" style={{ height: "100%", whiteSpace: "nowrap", textAlign: "center" }}>
-            <i className="ms-fontSize-su ms-Icon ms-Icon--ThumbnailView" style={{ display: "inline-block", verticalAlign: "middle", whiteSpace: "normal" }}></i><span className="ms-fontWeight-light ms-fontSize-xxl" style={{ paddingLeft: "20px", display: "inline-block", verticalAlign: "middle", whiteSpace: "normal" }}>{strings.NeedConfigurationHeading}</span>
+      return (
+        <section className={`${styles.imageCarousel}`}>
+          <div className={styles.welcome}>
+            <h2>{escape(strings.NeedConfigurationHeading)}</h2>
+            <img alt="" src={require('../assets/welcome-light.png')} className={styles.welcomeImage} />
           </div>
-          <div className="ms-Grid-col ms-u-hiddenSm ms-u-md3"></div>
-        </div>
-        <div className="ms-Grid-row" style={{ width: "65%", verticalAlign: "middle", margin: "0 auto", textAlign: "center" }}>
-          <span style={{ color: "#666", fontSize: "17px", display: "inline-block", margin: "24px 0", fontWeight: 100 }}>{strings.ShowItemsFromSelectedList}</span>
-        </div>
-        <div className="ms-Grid-row"/>
-      </div>;
+          <div>
+            <h4>{escape(strings.NeedConfigurationSubHeading)}</h4>
+            <p>{escape(strings.ShowItemsFromSelectedList)}</p>
+          </div>
+        </section>
+      );
     }
     else {
 
@@ -168,7 +165,7 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
                     <Carousel.Item>
                       <a href={(data.RedirectURL !== null) ? escape(data.RedirectURL["Url"]) : ""}
                         title={(data.RedirectURL !== null) ? escape(data.RedirectURL["Description"]) : escape(data.RedirectURL["Url"])}
-                        target={(data.Target)? Target.Blank: ImageCarousel.getUrlTarget(escape(data.Target))}>
+                        target={(data.Target) ? Target.Blank : ImageCarousel.getUrlTarget(escape(data.Target))}>
                         <img
                           className="d-block w-100"
                           src={JSON.parse(data.ImageURL).serverRelativeUrl}
