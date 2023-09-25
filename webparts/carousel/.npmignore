@@ -14,3 +14,5 @@ tslint.json
 
 .yo-rc.json
 .vscode
+
+qps-ploc.js
