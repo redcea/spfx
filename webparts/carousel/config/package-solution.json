@@ -16,10 +16,14 @@
     },
     "metadata": {
       "shortDescription": {
-        "default": "An Image Carousel (slideshow) webpart that allows you to slide images on your SharePoint Pages "
+        "default": "An Image Carousel (slideshow) webpart that allows you to slide images on your SharePoint Pages",
+        "pt-BR": "Um webpart de carrossel de imagens (slideshow) que permite que você deslize imagens em suas páginas do SharePoint",
+        "es-ES": "Un elemento web de carrusel de imágenes (presentación de diapositivas) que permite deslizar imágenes en sus páginas de SharePoint"
       },
       "longDescription": {
-        "default": "An image carousel (slideshow) of images that users can select by clicking and that directs them forward or backward in the slideshow."
+        "default": "An interactive image carousel (slideshow) that allow users to move slides forward or backward very easy. In addition it allows users to click on the image to open a hyperlink.",
+        "pt-BR": "Um carrossel interativo de imagens (slideshow) que facilita aos usuários mover os slides para frente ou para trás. O carrossel também permite que os usuários cliquem nas imagens para abrir um hiperlink.",
+        "es-ES": "Un carrusel de Imágenes (diapositivas) interactivo facilitando a los usuarios poder mover las diapositivas hacia delante o hacia atrás. Tambien permite que los usuarios puedan hacer clic en las diapositivas para abrir un hipervínculo."
       },
       "screenshotPaths": [],
       "videoUrl": "",
