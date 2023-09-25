@@ -13,6 +13,6 @@
   },
   "externals": {},
   "localizedResources": {
-    "ImageCarouselWebPartStrings": "lib/webparts/imageCarousel/loc/en-us.js"
+    "ImageCarouselWebPartStrings": "lib/webparts/imageCarousel/loc/{locale}.js"
   }
 }
