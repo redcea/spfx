@@ -13,8 +13,9 @@ define([], function () {
     "EnglishOptionLabel": "English",
     "PortugueseOptionLabel": "Portuguese",
     "SpanishOptionLabel": "Spanish",
-    "NeedConfigurationHeading": "Image Carousel",
-    "ShowItemsFromSelectedList": "Show a Carousel of Images from the selected list",
+    "NeedConfigurationHeading": "CAA-365 CAROUSEL!",
+    "NeedConfigurationSubHeading": "Webpart not configured.",
+    "ShowItemsFromSelectedList": "To show Images on the carousel, first enter the name",
     "PauseCarouselOptionLabel": "Pauses the carousel when the mouse pointer enters the carousel"
   }
 });
