@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import "bootstrap/dist/css/bootstrap.css";
 import { escape } from '@microsoft/sp-lodash-subset';
 
-function CreateCarouselCaption(props): any{
+function CreateCarouselCaption(props): any {
 
     if (props.Title === undefined && props.Description === undefined) {
         return (

@@ -86,13 +86,15 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
       this.getCarouselListContent();
     }
   }
-  componentDidMount = () => {
+  componentDidMount(): void {
     if (!ImageCarousel.isStringEmptyOrNull(this.props.listName)) {
       this.getCarouselListContent();
     }
   }
+  /*componentDidMount = () => {
+  }*/
 
-  private getCarouselListContent = () => {
+  private getCarouselListContent(): void {
     console.log('get Carousel Data Called');
     try {
       const sListName: string = escape(this.props.listName);
@@ -114,13 +116,14 @@ export default class ImageCarousel extends React.Component<IImageCarouselProps, 
           }
         })
         .then((item: ISliderCarouselState) => {
-          if (item != null) {
+          if (item !== null) {
             try {
               this.setState(({
                 value: item.value
               }));
             }
             catch (err) {
+              console.log("error in ISliderCarouselState", err)
             }
           }
         });
