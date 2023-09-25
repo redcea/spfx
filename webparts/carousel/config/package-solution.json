@@ -7,6 +7,11 @@
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "supportedLocales": [
+      "en-US",
+      "pt-BR",
+      "es-ES"
+    ],
     "developer": {
       "name": "Conference of American Armies",
       "websiteUrl": "https://www.redcea.com",
@@ -27,7 +32,10 @@
       },
       "screenshotPaths": [],
       "videoUrl": "",
-      "categories": []
+      "categories": [
+        "Content management",
+        "Site Design"
+      ]
     },
     "features": [
       {
