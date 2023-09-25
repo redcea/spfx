@@ -13,7 +13,8 @@ declare interface IImageCarouselWebPartStrings {
   PortugueseOptionLabel: string;
   SpanishOptionLabel: string;
   NeedConfigurationHeading:string;
-  ShowItemsFromSelectedList:String;
+  NeedConfigurationSubHeading:string;
+  ShowItemsFromSelectedList:string;
   PauseCarouselOptionLabel:string;
 }
 
