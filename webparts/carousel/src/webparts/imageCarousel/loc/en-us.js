@@ -15,6 +15,7 @@ define([], function () {
     "SpanishOptionLabel": "Spanish",
     "NeedConfigurationHeading": "CAA-365 CAROUSEL!",
     "NeedConfigurationSubHeading": "Webpart not configured.",
+    "CarouselOptionsGroupName": "Carousel Options",
     "ShowItemsFromSelectedList": "To show Images on the carousel, first enter the name",
     "PauseCarouselOptionLabel": "Pauses the carousel when the mouse pointer enters the carousel"
   }

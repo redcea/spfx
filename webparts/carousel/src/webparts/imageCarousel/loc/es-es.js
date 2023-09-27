@@ -15,6 +15,7 @@ define([], function () {
     "SpanishOptionLabel": "Español",
     "NeedConfigurationHeading": "¡CEA - 365 Carrusel de Imagenes!",
     "NeedConfigurationSubHeading": "Elemento web no está configurado.",
+    "CarouselOptionsGroupName": "Opciones del Carrusel",
     "ShowItemsFromSelectedList": "Para mostrar imágenes en el carrusel, configure el nombre de la lista",
     "PauseCarouselOptionLabel": "Pone en pausa el slideshow cuando el puntero del ratón entra en él."
   }

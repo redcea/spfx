@@ -114,7 +114,7 @@ export default class ImageCarouselWebPart extends BaseClientSideWebPart<IImageCa
               ]
             },
             {
-              groupName: "Carousel Options",
+              groupName: strings.CarouselOptionsGroupName,
               groupFields: [
                 PropertyPaneSlider('slideSpeed', {
                   min: 2,

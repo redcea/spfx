@@ -14,6 +14,7 @@ declare interface IImageCarouselWebPartStrings {
   SpanishOptionLabel: string;
   NeedConfigurationHeading:string;
   NeedConfigurationSubHeading:string;
+  CarouselOptionsGroupName:string;
   ShowItemsFromSelectedList:string;
   PauseCarouselOptionLabel:string;
 }

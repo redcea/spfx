@@ -15,6 +15,7 @@ define([], function() {
       "SpanishOptionLabel": "[!!! £èářñ ₥ôřè ℓôř !!!]",
       "NeedConfigurationHeading": "[!!! £èářñ ₥ôřè ℓôř !!!]",
       "NeedConfigurationSubHeading": "[!!! £èářñ ₥ôřè ℓôř !!!]",
+      "CarouselOptionsGroupName": "[!!! £èářñ ₥ôřè ℓôř !!!]",
       "ShowItemsFromSelectedList": "[!!! Gřèèƭïñϱ ƭô ƨλôω ïñ ƭλè ωèβ ƥářƭ ℓôřè₥ ïƥƨú !!!]",
       "PauseCarouselOptionLabel": "[!!! Gřèèƭïñϱ ƭô ƨλôω ïñ ƭλè ωèβ ƥářƭ ℓôřè₥ ïƥƨú !!!]"
     }

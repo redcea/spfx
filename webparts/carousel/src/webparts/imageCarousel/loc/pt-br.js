@@ -15,6 +15,7 @@ define([], function() {
       "SpanishOptionLabel": "Espanhol",
       "NeedConfigurationHeading": "CEA - 365 Slideshow!",
       "NeedConfigurationSubHeading": "Web part nāo está configurada.",
+      "CarouselOptionsGroupName": "Opções de Carrossel",
       "ShowItemsFromSelectedList": "Para mostrar o slideshow de imagens, precisa configurar o nome da lista",
       "PauseCarouselOptionLabel": "Pausa o slideshow quando o ponteiro do mouse entra no carrossel"
     }
